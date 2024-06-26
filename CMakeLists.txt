@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(ROS2-paralelni-manipulator)
+project(ros2-paralelni-manipulator)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)

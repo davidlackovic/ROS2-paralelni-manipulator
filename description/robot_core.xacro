@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="macros.xacro" />
+    
+
+
+    <link name="base_link">
+        
+    </link>
+
+    <joint name="spodnja_plosca_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="spodnja_plosca"/>
+        
+    </joint>
+
+    <link name="spodnja_plosca">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.25" length="0.02"/>
+            </geometry>
+            <material name="orange"/>     
+        </visual>
+
+        <xacro:inertial_cylinder mass="1.5" length="0.02" radius="0.25">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    --spodnja roka 1
+    <joint name="sp_joint_1" type="revolute">
+        <origin xyz="0.0 -0.2 0.0525" rpy="0.0 0.0 0.0"/>
+        <parent link="spodnja_plosca"/>
+        <child link="sp_roka_1"/>
+        <axis xyz="1.0 0.0 0.0"/>
+        <limit lower="-5.0" upper="2.0" effort="100.0" velocity="100.0"/>
+    </joint>
+
+    <link name="sp_roka_1">
+        <visual>
+            <origin xyz="0.0 0 0.061605" rpy="-0.7854 0.0 0.0"/>
+            <geometry>
+                <box size="0.02 0.2 0.03"/>
+            </geometry>
+            <material name="green"/>
+        </visual>
+        <xacro:inertial_box mass="0.1" x="0.02" y="0.2" z="0.03">
+            <origin xyz="0.0 -0.27071 0.12321" rpy="0.7854 0.0 0.0"/>
+        </xacro:inertial_box>
+    </link>
+
+    --spodnja roka 2
+    <joint name="sp_joint_2" type="revolute">
+        <origin xyz="0.1732 0.100 0.0525" rpy="0.0 0.0 0.0"/>
+        <parent link="spodnja_plosca"/>
+        <child link="sp_roka_2"/>
+        <axis xyz="-0.5 0.866 0"/>
+        <limit lower="0.0" upper="2.0" effort="100.0" velocity="100.0"/>
+    </joint>
+
+    <link name="sp_roka_2">
+        <visual>
+            <origin xyz="0.23444 0.134344 0.12321" rpy="-0.7854 0 2.094395"/>
+            <geometry>
+                <box size="0.02 0.2 0.03"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <xacro:inertial_box mass="0.1" x="0.02" y="0.2" z="0.03">
+            <origin xyz="0.23444 0.134344 0.12321" rpy="-0.7854 0 2.094395"/>
+        </xacro:inertial_box>
+    </link>
+
+    --spodnja roka 3
+    <joint name="sp_joint_3" type="revolute">
+        <origin xyz="-0.1732 0.100 0.0525" rpy="0.0 0.0 0.0"/>
+        <parent link="spodnja_plosca"/>
+        <child link="sp_roka_3"/>
+        <axis xyz="0.5 0.866 0"/>
+        <limit lower="0.0" upper="2.0" effort="100.0" velocity="100.0"/>
+    </joint>
+
+    <link name="sp_roka_3">
+        <visual>
+            <origin xyz="-0.23444 0.134344 0.12321" rpy="-0.7854 0 -2.094395"/>
+            <geometry>
+                <box size="0.02 0.2 0.03"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <xacro:inertial_box mass="0.1" x="0.02" y="0.2" z="0.03">
+            <origin xyz="-0.23444 0.134344 0.12321" rpy="-0.7854 0 -2.094395"/>
+        </xacro:inertial_box>
+    </link>
+
+    
+    --zgornja roka 1
+    <joint name="zg_joint_1" type="revolute">
+        <origin xyz="0 -0.34142 0.19392" rpy="0.0 0.0 0.0"/>
+        <parent link="sp_roka_1"/>
+        <child link="zg_roka_1"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="-5.0" upper="2.0" effort="100.0" velocity="100.0"/>
+    </joint>
+
+    <link name="zg_roka_1">
+        <visual>
+            <origin xyz="-0 0 0" rpy="0.7854 0 0"/>
+            <geometry>
+                <box size="0.02 0.23481 0.03"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <xacro:inertial_box mass="0.1" x="0.02" y="0.2" z="0.03">
+            <origin xyz="-0 -0.2584 0.27694" rpy="0.7854 0.0 0.0"/>
+        </xacro:inertial_box>
+    </link>
+
+    --zgornja roka 2
+    <joint name="zg_joint_2" type="revolute">
+        <origin xyz="0.29568 0.17071 0.19392" rpy="0.0 0.0 0.0"/>
+        <parent link="sp_roka_2"/>
+        <child link="zg_roka_2"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="0.0" upper="2.0" effort="100.0" velocity="100.0"/>
+    </joint>
+
+    <link name="zg_roka_2">
+        <visual>
+            <origin xyz="0.22378 0.1292 0.27694" rpy="0.7854 0 2.094395"/>
+            <geometry>
+                <box size="0.02 0.23481 0.03"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <xacro:inertial_box mass="0.1" x="0.02" y="0.2" z="0.03">
+            <origin xyz="0.22378 0.1292 0.27694" rpy="0.7854 0 2.094395"/>
+        </xacro:inertial_box>
+    </link>
+
+    --zgornja roka 3
+    <joint name="zg_joint_3" type="revolute">
+        <origin xyz="-0.29568 0.17071 0.19392" rpy="0.0 0.0 0.0"/>
+        <parent link="sp_roka_3"/>
+        <child link="zg_roka_3"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="0.0" upper="2.0" effort="100.0" velocity="100.0"/>
+    </joint>
+
+    <link name="zg_roka_3">
+        <visual>
+            <origin xyz="-0.22378 0.1292 0.27694" rpy="0.7854 0 -2.094395"/>
+            <geometry>
+                <box size="0.02 0.23481 0.03"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <xacro:inertial_box mass="0.1" x="0.02" y="0.2" z="0.03">
+            <origin xyz="-0.22378 0.1292 0.27694" rpy="0.7854 0 -2.094395"/>
+        </xacro:inertial_box>
+    </link>
+
+    <joint name="vrh_joint_1" type="revolute">
+        <origin xyz="0 -0.17538 0.35996" rpy="0.0 0.0 0.0"/>
+        <parent link="zg_roka_3"/>
+        <child link="zg_plosca"/>
+        <limit lower="0.0" upper="2.0" effort="100.0" velocity="100.0"/>
+    </joint>
+
+
+    <link name="zg_plosca">
+        <visual>
+            <origin xyz="0 0 0.37"/>
+            <geometry>
+                <cylinder radius="0.2" length="0.01"/>
+            </geometry>
+            <material name="green"/>     
+        </visual>
+
+        <xacro:inertial_cylinder mass="1.5" length="0.02" radius="0.25">
+            <origin xyz="0.0 0.0 0.37" rpy="0.0 0.0 0.0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+</robot>
